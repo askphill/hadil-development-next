@@ -1,0 +1,26 @@
+@use 'styles/mixins';
+
+.image {
+  width: 100vw;
+  height: 75vh;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+}
+
+.title {
+  font-size: 5rem;
+  font-style: italic;
+  width: 50%;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  width: 50%;
+  text-decoration: underline;
+}

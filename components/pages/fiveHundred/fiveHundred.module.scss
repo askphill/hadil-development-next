@@ -1,0 +1,29 @@
+@use 'styles/mixins';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.title {
+  padding-bottom: 10rem;
+  font-size: 10rem;
+  color: red;
+  text-align: center;
+}
+
+.errorMessage {
+  font-size: 2rem;
+  color: red;
+  text-align: center;
+}
+
+.errorQuery {
+  font-size: 1.5rem;
+  padding: 7rem 10% 0 10%;
+  color: red;
+  text-align: center;
+}

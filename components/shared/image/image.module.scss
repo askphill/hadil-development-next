@@ -1,0 +1,30 @@
+@use 'styles/mixins';
+
+.desktop {
+  display: none;
+  visibility: hidden;
+
+  @include mixins.media {
+    display: block;
+    visibility: visible;
+  }
+}
+
+.mobile {
+  display: block;
+  visibility: visible;
+
+  @include mixins.media {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.visibleDesktop {
+  display: block;
+  visibility: visible;
+}
+
+.layoutFill {
+  position: relative;
+}

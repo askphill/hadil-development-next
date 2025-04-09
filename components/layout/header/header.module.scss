@@ -1,0 +1,23 @@
+@use 'styles/mixins';
+
+.header {
+  position: fixed;
+  width: 100vw;
+  height: 2rem;
+  z-index: 100;
+}
+
+.buttonGroup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  display: flex;
+
+  font-size: 3rem;
+}
+
+.button {
+  display: inline-block;
+  margin: 0 1rem;
+}

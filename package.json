@@ -1,0 +1,42 @@
+{
+  "name": "next-simple",
+  "version": "0.2",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build"
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "^14.1.2",
+    "@contentful/rich-text-types": "^14.1.2",
+    "classnames": "^2.2.6",
+    "contentful-management": "^7.8.0",
+    "eslint-config-next": "^11.0.0",
+    "multipass-js": "^0.1.5",
+    "next": "^11.0.0",
+    "next-iron-session": "^4.1.12",
+    "password-validator": "^5.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "sass": "^1.32.8",
+    "shopify-gid": "^1.0.1",
+    "swr": "^0.5.4"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^10.0.7",
+    "babel-eslint": "^10.1.0",
+    "contentful": "^8.1.7",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.20.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1"
+  }
+}
