@@ -2,7 +2,6 @@ import { RichText, Image } from 'components/shared';
 
 const Cta = ({ data }) => {
   const { title, image, subtitle, description, button } = data;
-  console.log('Cta', button);
   const link = button?.link?.externalLink || '';
 
   return (
