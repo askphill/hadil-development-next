@@ -1,6 +1,11 @@
 @use './mixins';
 @use './variables';
 
+// Importing Tailwind CSS
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 // @font-face here; preload fonts at _document.jsx
 
 html {
