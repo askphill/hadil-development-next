@@ -14,7 +14,7 @@ const Home = ({ page, error, previewData, global }) => {
   return (
     // <Layout previewData={previewData}>
     <>
-      <div
+      {/* <div
         style={{
           fontSize: '10rem',
           width: '100rem',
@@ -24,7 +24,7 @@ const Home = ({ page, error, previewData, global }) => {
         }}
       >
         {global.layout.testResource?.text}
-      </div>
+      </div> */}
       {/* {page?.seo && <SEO seo={page.seo} />} */}
       <PageGeneral data={page} />
     </>

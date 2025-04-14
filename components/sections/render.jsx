@@ -4,9 +4,11 @@ import { useInViewTracking } from 'hooks';
 
 // dynamically import components, otherwise unused sections will be loaded
 const Hero = dynamic(() => import('components/sections/hero'));
+const Cta = dynamic(() => import('components/sections/cta'));
 
 const components = {
   Hero,
+  Cta,
 };
 
 const Sections = ({ type, data, i }) => {
