@@ -5,7 +5,7 @@ const Cta = ({ data }) => {
   const link = button?.link?.externalLink || '';
 
   return (
-    <div className="px-7 bg-black text-white h-[80vh] flex items-center w-full lg:px-44 relative">
+    <section className="px-7 bg-black text-white h-[80vh] flex items-center w-full lg:px-44 relative">
       <div className="flex flex-col gap-y-44 lg:gap-y-16 w-full">
         {image && (
           <div className="absolute -top-12 hidden lg:block right-32">
@@ -40,7 +40,7 @@ const Cta = ({ data }) => {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 
