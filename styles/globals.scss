@@ -22,11 +22,6 @@ body {
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-
-  // for development grid
-  &::before {
-    content: '';
-  }
 }
 
 a,
