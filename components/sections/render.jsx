@@ -6,11 +6,13 @@ import { useInViewTracking } from 'hooks';
 const Hero = dynamic(() => import('components/sections/hero'));
 const Cta = dynamic(() => import('components/sections/cta'));
 const Text = dynamic(() => import('components/sections/text'));
+const Carousel = dynamic(() => import('components/sections/carousel'));
 
 const components = {
   Hero,
   Cta,
   Text,
+  Carousel,
 };
 
 const Sections = ({ type, data, i }) => {
