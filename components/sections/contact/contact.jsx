@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { RichText } from 'components/shared';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useForm } from 'react-hook-form';
@@ -29,7 +30,7 @@ const Text = ({ data }) => {
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
             {errors.mail && (
-              <p role="alert" className="text-red-500">
+              <p role="alert" className="text-warning">
                 {errors.mail.message}
               </p>
             )}
@@ -41,7 +42,7 @@ const Text = ({ data }) => {
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
             {errors.firstName?.type === 'required' && (
-              <p role="alert" className="text-red-500">
+              <p role="alert" className="text-warning">
                 {errors.firstName.message}
               </p>
             )}
@@ -70,11 +71,14 @@ const Text = ({ data }) => {
             )}
 
             {formButton && (
-              <div className="rounded-full p-[2px] w-full bg-[linear-gradient(to_right,_#622888,_#BC5548,_#EBC286,_#F6F0DA)] inline-block mx-2 lg:mx-0">
-                <input
+              <div className="rounded-full p-[2px] bg-[linear-gradient(to_right,_#622888,_#BC5548,_#EBC286,_#F6F0DA)]">
+                <button
                   type="submit"
-                  className="p-5 text-white text-center flex justify-center text-lg w-full rounded-full bg-black"
-                />
+                  aria-label={formButton.buttonText}
+                  className="p-5 w-full text-white text-center block text-lg rounded-full bg-black "
+                >
+                  {formButton.buttonText}
+                </button>
               </div>
             )}
           </form>
