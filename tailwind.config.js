@@ -8,7 +8,11 @@ module.exports = {
       white: '#ffffff',
       black: '#151515',
     },
-    extend: {},
+    extend: {
+      colors: {
+        warning: '#cc3300',
+      },
+    },
   },
   plugins: [],
 };

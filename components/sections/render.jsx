@@ -9,6 +9,7 @@ const Text = dynamic(() => import('components/sections/text'));
 const Carousel = dynamic(() => import('components/sections/carousel'));
 const Team = dynamic(() => import('components/sections/team'));
 const MediaGrid = dynamic(() => import('components/sections/mediaGrid'));
+const Contact = dynamic(() => import('components/sections/contact'));
 
 const components = {
   Hero,
@@ -17,6 +18,7 @@ const components = {
   Carousel,
   Team,
   MediaGrid,
+  Contact,
 };
 
 const Sections = ({ type, data, i }) => {
