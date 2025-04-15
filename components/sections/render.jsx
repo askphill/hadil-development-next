@@ -7,12 +7,14 @@ const Hero = dynamic(() => import('components/sections/hero'));
 const Cta = dynamic(() => import('components/sections/cta'));
 const Text = dynamic(() => import('components/sections/text'));
 const Carousel = dynamic(() => import('components/sections/carousel'));
+const Team = dynamic(() => import('components/sections/team'));
 
 const components = {
   Hero,
   Cta,
   Text,
   Carousel,
+  Team,
 };
 
 const Sections = ({ type, data, i }) => {
