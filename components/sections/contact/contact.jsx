@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
+
 import { useState } from 'react';
 import { RichText } from 'components/shared';
 import { useForm, Form } from 'react-hook-form';
@@ -13,18 +14,20 @@ const Contact = ({ data }) => {
     reset,
   } = useForm();
 
-  const [formMessage, setMessage] = useState(null); // success/error message
-  const [loading, setLoading] = useState(false); // loading state
+  const [formMessage, setMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSuccess = () => {
     setMessage({ type: 'success', text: 'Your form was submitted!' });
     setLoading(false);
-    reset(); // clear the form
+    reset();
+    setTimeout(() => setMessage(null), 5000);
   };
 
   const handleError = () => {
     setMessage({ type: 'error', text: 'Something went wrong. Please try again.' });
     setLoading(false);
+    setTimeout(() => setMessage(null), 5000);
   };
 
   return (
@@ -35,60 +38,80 @@ const Contact = ({ data }) => {
             <RichText text={formTitle.json} />
           </div>
         )}
-        <div className="flex flex-col gap-y-6 lg:gap-y-9 lg:max-w-96">
+        <div className="flex flex-col gap-y-6 lg:gap-y-9 lg:max-w-96 w-full">
           <Form
             action="/api/subscribe"
             encType="application/json"
             control={control}
-            onSubmit={() => setLoading(true)} // sets loading immediately
+            onSubmit={() => setLoading(true)}
             onSuccess={handleSuccess}
             onError={handleError}
             className="flex flex-col gap-y-5"
           >
             <input
-              {...register('mail', { required: 'Email Address is required' })}
-              aria-invalid={errors.mail ? 'true' : 'false'}
-              placeholder="Email Address"
+              id="mail"
               type="email"
+              autoComplete="email"
+              placeholder="Email Address"
+              aria-invalid={errors.mail ? 'true' : 'false'}
+              aria-describedby={errors.mail ? 'mail-error' : undefined}
+              {...register('mail', { required: 'Email Address is required' })}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
             {errors.mail && (
-              <p role="alert" className="text-danger">
+              <p id="mail-error" role="alert" className="text-danger">
                 {errors.mail.message}
               </p>
             )}
 
             <input
-              {...register('firstName', { required: 'First name is required', maxLength: 20 })}
-              aria-invalid={errors.firstName ? 'true' : 'false'}
-              placeholder="First Name"
+              id="firstName"
               type="text"
+              placeholder="First Name"
+              autoComplete="given-name"
+              aria-invalid={errors.firstName ? 'true' : 'false'}
+              aria-describedby={errors.firstName ? 'firstName-error' : undefined}
+              {...register('firstName', {
+                required: 'First name is required',
+                maxLength: 20,
+              })}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
             {errors.firstName && (
-              <p role="alert" className="text-danger">
+              <p id="firstName-error" role="alert" className="text-danger">
                 {errors.firstName.message}
               </p>
             )}
 
             <input
-              {...register('lastName', { pattern: /^[A-Za-z]+$/i })}
+              id="lastName"
+              type="text"
+              autoComplete="family-name"
               placeholder="Last Name"
-              type="text"
+              aria-describedby="lastName-desc"
+              {...register('lastName', { pattern: /^[A-Za-z]+$/i })}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
+            <div id="lastName-desc" className="sr-only">
+              Only letters are allowed.
+            </div>
 
             <input
-              {...register('company')}
+              id="company"
+              autoComplete="organization"
+              type="text"
               placeholder="Company"
-              type="text"
+              {...register('company')}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
 
             <input
-              {...register('job', { pattern: /^[A-Za-z]+$/i })}
-              placeholder="Job Title"
+              id="job"
               type="text"
+              autoComplete="organization-title"
+              placeholder="Job Title"
+              aria-describedby="job-desc"
+              {...register('job')}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
 
@@ -113,6 +136,8 @@ const Contact = ({ data }) => {
 
             {formMessage && (
               <p
+                role="alert"
+                aria-live="polite"
                 className={`text-center mt-4 ${
                   formMessage.type === 'success' ? 'text-success' : 'text-danger'
                 }`}
