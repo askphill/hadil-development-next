@@ -4,7 +4,13 @@ const MediaGrid = ({ data }) => {
   const { media } = data;
 
   return (
-    <section className="px-8 bg-black flex items-center w-full lg:px-0 lg:py-24 py-12 relative">
+    <section
+      className="px-8 bg-black flex items-center w-full lg:px-0 lg:py-24 py-12 relative"
+      aria-labelledby="media-grid-heading"
+    >
+      <h2 id="media-grid-heading" className="sr-only">
+        Media Gallery
+      </h2>
       <div className="w-full max-w-7xl mx-auto grid grid-cols-12 gap-6 g:gap-14">
         {media.map((item, index) => {
           const mod = index % 3;
@@ -14,12 +20,11 @@ const MediaGrid = ({ data }) => {
           if (mod === 2) colSpan = 'col-span-12';
 
           return (
-            <div key={item.title} className={`${colSpan} flex justify-center`}>
+            <div key={item.title || index} className={`${colSpan} flex justify-center`}>
               <Image
                 src={item}
                 className="aspect-[16/9] w-full"
-                alt={item.title}
-                layout="fill"
+                alt={item.alt || item.title || `Media item ${index + 1}`}
                 objectFit="cover"
                 loading="lazy"
               />
