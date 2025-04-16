@@ -48,6 +48,9 @@ const Contact = ({ data }) => {
             onError={handleError}
             className="flex flex-col gap-y-5"
           >
+            <label htmlFor="mail" className="sr-only">
+              Email Address
+            </label>
             <input
               id="mail"
               type="email"
@@ -63,6 +66,10 @@ const Contact = ({ data }) => {
                 {errors.mail.message}
               </p>
             )}
+
+            <label htmlFor="firstName" className="sr-only">
+              First Name
+            </label>
 
             <input
               id="firstName"
@@ -82,6 +89,9 @@ const Contact = ({ data }) => {
                 {errors.firstName.message}
               </p>
             )}
+            <label htmlFor="lastName" className="sr-only">
+              Last Name
+            </label>
 
             <input
               id="lastName"
@@ -89,12 +99,13 @@ const Contact = ({ data }) => {
               autoComplete="family-name"
               placeholder="Last Name"
               aria-describedby="lastName-desc"
-              {...register('lastName', { pattern: /^[A-Za-z]+$/i })}
+              {...register('lastName')}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
-            <div id="lastName-desc" className="sr-only">
-              Only letters are allowed.
-            </div>
+
+            <label htmlFor="company" className="sr-only">
+              Company
+            </label>
 
             <input
               id="company"
@@ -104,6 +115,9 @@ const Contact = ({ data }) => {
               {...register('company')}
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
+            <label htmlFor="job" className="sr-only">
+              Job Title
+            </label>
 
             <input
               id="job"
