@@ -3,6 +3,7 @@ import { Image } from 'components/shared';
 
 const Team = ({ data }) => {
   const { membersTitle, members } = data;
+  if (!members.length) return null;
 
   return (
     <section
@@ -20,20 +21,24 @@ const Team = ({ data }) => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 lg:gap-14 gap-9">
             {members.map((member, index) => (
               <div key={member._id || index} className="flex flex-col items-center text-center">
-                <div className="relative rounded-full overflow-hidden">
-                <Image
-                  src={member.memberPhoto}
-                  className="w-36 h-36 lg:w-56 lg:h-56"
-                  layout="fill"
-                  loading="lazy"
-                />
-                </div>
-                <h3 className="lg:text-xl mt-4 lg:mt-7">
-                  {member.memberName || 'Unnamed'}
-                </h3>
-                <p className="lg:text-xl lg:mt-2 mt-1">
-                  {member.company || 'Company Unknown'}
-                </p>
+                {member.memberPhoto && (
+                  <div className="relative rounded-full overflow-hidden">
+                    <Image
+                      src={member.memberPhoto}
+                      alt={member.memberName}
+                      className="w-36 h-36 lg:w-56 lg:h-56"
+                      layout="fill"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
+                {member.memberName && (
+                  <h3 className="lg:text-xl mt-4 lg:mt-7">{member.memberName}</h3>
+                )}
+                {member.company && (
+                  <p className="lg:text-xl lg:mt-2 mt-1">{member.company || 'Company Unknown'}</p>
+                )}
               </div>
             ))}
           </div>
