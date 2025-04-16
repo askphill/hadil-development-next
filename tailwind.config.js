@@ -10,7 +10,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        warning: '#cc3300',
+        danger: '#cc3300',
+        success: '#22bb33',
       },
     },
   },
