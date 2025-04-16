@@ -1,18 +1,31 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/jsx-props-no-spreading */
-
+import { useState } from 'react';
 import { RichText } from 'components/shared';
 import { useForm, Form } from 'react-hook-form';
-import { useState } from 'react';
 
 const Contact = ({ data }) => {
   const { formText, formTitle, formButton } = data;
-  const [formMessage, setMessage] = useState(null);
   const {
     register,
     formState: { errors },
     control,
+    reset,
   } = useForm();
+
+  const [formMessage, setMessage] = useState(null); // success/error message
+  const [loading, setLoading] = useState(false); // loading state
+
+  const handleSuccess = () => {
+    setMessage({ type: 'success', text: 'Your form was submitted!' });
+    setLoading(false);
+    reset(); // clear the form
+  };
+
+  const handleError = () => {
+    setMessage({ type: 'error', text: 'Something went wrong. Please try again.' });
+    setLoading(false);
+  };
 
   return (
     <section className="px-8 bg-black text-white flex items-center w-full lg:px-0 lg:py-24 py-12 relative">
@@ -27,10 +40,9 @@ const Contact = ({ data }) => {
             action="/api/subscribe"
             encType="application/json"
             control={control}
-            onSuccess={() => setMessage({ type: 'success', text: 'Your form was submitted!' })}
-            onError={() =>
-              setMessage({ type: 'error', text: 'Something went wrong. Please try again.' })
-            }
+            onSubmit={() => setLoading(true)} // sets loading immediately
+            onSuccess={handleSuccess}
+            onError={handleError}
             className="flex flex-col gap-y-5"
           >
             <input
@@ -47,16 +59,13 @@ const Contact = ({ data }) => {
             )}
 
             <input
-              {...register('firstName', {
-                required: 'First name is required',
-                maxLength: 20,
-              })}
+              {...register('firstName', { required: 'First name is required', maxLength: 20 })}
               aria-invalid={errors.firstName ? 'true' : 'false'}
               placeholder="First Name"
               type="text"
               className="px-7 py-6 rounded-full bg-white text-black placeholder:text-black/20"
             />
-            {errors.firstName?.type === 'required' && (
+            {errors.firstName && (
               <p role="alert" className="text-danger">
                 {errors.firstName.message}
               </p>
@@ -94,12 +103,14 @@ const Contact = ({ data }) => {
                 <button
                   type="submit"
                   aria-label={formButton.buttonText}
-                  className="p-5 w-full text-white text-center block text-lg rounded-full bg-black"
+                  className="p-5 w-full text-white text-center block text-lg rounded-full bg-black disabled:opacity-50"
+                  disabled={loading}
                 >
-                  {formButton.buttonText}
+                  {loading ? 'Sending...' : formButton.buttonText}
                 </button>
               </div>
             )}
+
             {formMessage && (
               <p
                 className={`text-center mt-4 ${
