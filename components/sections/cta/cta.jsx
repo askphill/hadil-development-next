@@ -24,9 +24,11 @@ const Cta = ({ data }) => {
         )}
         <div className="flex flex-col gap-y-7 lg:gap-y-16 w-full flex-1 justify-end">
           {subtitle && <h2 className="text-2xl lg:text-5xl uppercase">{subtitle}</h2>}
-          <div id="cta-heading" className="[&>p]:font-bold [&>p]:text-7xl [&>p]:lg:text-[9rem]">
-            <RichText text={title.json} />
-          </div>
+          {title.json && (
+            <div id="cta-heading" className="[&>p]:font-bold [&>p]:text-7xl [&>p]:lg:text-[9rem]">
+              <RichText text={title.json} />
+            </div>
+          )}
           {description && <p className="text-2xl lg:text-3xl uppercase">{description}</p>}
         </div>
 
