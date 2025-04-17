@@ -9,11 +9,12 @@ const Home = ({ page, error, previewData, global }) => {
   // if (error) {
   //   return <PageFiveHundred data={page} />;
   // }
+  // console.log('page', page);
 
   return (
     // <Layout previewData={previewData}>
     <>
-      <div
+      {/* <div
         style={{
           fontSize: '10rem',
           width: '100rem',
@@ -23,9 +24,9 @@ const Home = ({ page, error, previewData, global }) => {
         }}
       >
         {global.layout.testResource?.text}
-      </div>
+      </div> */}
       {/* {page?.seo && <SEO seo={page.seo} />} */}
-      {/* <PageGeneral data={page} /> */}
+      <PageGeneral data={page} />
     </>
     // </Layout>
   );
@@ -35,8 +36,8 @@ export async function getStaticProps({ locale, preview = false, previewData = nu
   const type = await getPageType('/', locale);
 
   const page = await getPage(type, '/', locale, preview);
+
   const global = await getGlobal(['layout'], locale, preview);
-  console.log('global', global);
   if (page.errors) {
     return {
       props: { page, error: true, previewData },

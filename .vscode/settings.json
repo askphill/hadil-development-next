@@ -17,15 +17,8 @@
   "less.validate": false,
   "scss.validate": false,
   // Set the focus for es and stylelint
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact"
-  ],
-  "stylelint.validate": [
-    "css",
-    "sass",
-    "scss"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "stylelint.validate": ["css", "sass", "scss"],
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
@@ -49,5 +42,9 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.prettier": "explicit"
     }
-  }
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.inlineSuggest.enabled": true
 }
